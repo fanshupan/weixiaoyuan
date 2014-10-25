@@ -7,10 +7,12 @@
 //
 
 #import "LoginViewController.h"
+#import "ValidateViewController.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong)UITextField *emailField;
 @property (nonatomic,strong)UITextField *passwordField;
+@property (nonatomic,strong) ValidateViewController *validateViewController;
 
 @end
 
@@ -21,7 +23,6 @@
    
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LoginBG-568h@2x"]]];
     
-    [self.navigationController.navigationBar setHidden:YES];
     
     self.emailField=[[UITextField alloc]initWithFrame:CGRectMake(10, 100, self.view.frame.size.width-20, 30)];
     self.emailField.placeholder=@"Email";
@@ -69,14 +70,20 @@
     
     
     
+    
+    
    // CGRectGetMinY == registerButton.frame.origin.y
     // Do any additional setup after loading the view.
 }
 
 -(void)doRegister:(id)sender
 {
-    [self.emailField becomeFirstResponder];
+    //[self.emailField becomeFirstResponder];
    // self.passwordField.secureTextEntry =NO;
+    
+    self.validateViewController = [[ValidateViewController alloc] init];
+    
+    [self.navigationController pushViewController:self.validateViewController animated:YES];
     
 }
 
@@ -102,6 +109,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:YES];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
