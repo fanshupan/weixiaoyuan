@@ -368,6 +368,7 @@
 		7C6DD64D1A0456BC00D26F85 /* comment_seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6DD5691A0456BC00D26F85 /* comment_seperate.png */; };
 		7C6DD64E1A0456BC00D26F85 /* comment_seperate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6DD56A1A0456BC00D26F85 /* comment_seperate@2x.png */; };
 		7C6DD6511A045B4D00D26F85 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */; };
+		7C96FFFB1A0480E600ABCE59 /* StudyTableview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */; };
 		7CF05AE519F2089700BE314B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05AE419F2089700BE314B /* main.m */; };
 		7CF05AE819F2089700BE314B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05AE719F2089700BE314B /* AppDelegate.m */; };
 		7CF05AF319F2089700BE314B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF05AF219F2089700BE314B /* Images.xcassets */; };
@@ -748,6 +749,8 @@
 		7C6DD56A1A0456BC00D26F85 /* comment_seperate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment_seperate@2x.png"; sourceTree = "<group>"; };
 		7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7C96FFF91A0480E600ABCE59 /* StudyTableview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyTableview.h; sourceTree = "<group>"; };
+		7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyTableview.m; sourceTree = "<group>"; };
 		7CF05ADF19F2089700BE314B /* 微校园.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微校园.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF05AE319F2089700BE314B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF05AE419F2089700BE314B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 				7C33EDE119FB3F7D0020667D /* ValidateViewController.m */,
 				7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */,
 				7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */,
+				7C96FFF91A0480E600ABCE59 /* StudyTableview.h */,
+				7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */,
 				7CF05AF219F2089700BE314B /* Images.xcassets */,
 				7CF05AE219F2089700BE314B /* Supporting Files */,
 			);
@@ -1665,6 +1670,7 @@
 				7C6DD6511A045B4D00D26F85 /* RegisterViewController.m in Sources */,
 				7C33EDE219FB3F7D0020667D /* ValidateViewController.m in Sources */,
 				7CF05AE819F2089700BE314B /* AppDelegate.m in Sources */,
+				7C96FFFB1A0480E600ABCE59 /* StudyTableview.m in Sources */,
 				7CF05AE519F2089700BE314B /* main.m in Sources */,
 				7CF05B4219F20CB800BE314B /* LoginViewController.m in Sources */,
 			);

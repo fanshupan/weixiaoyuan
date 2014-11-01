@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "ValidateViewController.h"
+#import "StudyTableview.h"
+
 #define TABLEWIDTH 310
 #define TABLEHEIGHT 130
 #define HEIGHT_IPHONE_5 568
@@ -36,26 +38,21 @@
     return self;
 }
 
-
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
 }
 
 -(void)startAnimation
 {
     NSArray *array = [NSArray arrayWithObjects:self.logoimgview,self.logoimgview2, nil];
     [self movingAnimatWithcurrentView:nil options:array x:0 y:-150 duration:0.8 handel:^(BOOL finished) {
-        
         if (finished) {
             [self fadeIn:self.tableview withDuration:0.8 andWait:0];
             [self fadeIn:self.registerButton withDuration:0.8 andWait:0];
             [self fadeIn:self.loginButton withDuration:0.8 andWait:0];
             [self fadeIn:self.sinaButton withDuration:0.8 andWait:0];
         }
-        
     }];
 }
 
@@ -67,26 +64,42 @@
     }
     
     UIImage *logoimg2 = [UIImage imageNamed:@"logo"];
-    
     logoimgview2 = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.center.x-130, self.view.center.y - 55-extraheight, logoimg2.size.width/2, logoimg2.size.height/2)];
     logoimgview2.image = logoimg2;
     tableviewAnimatFlag = YES;
     logoimgview= [[UIImageView alloc]initWithFrame:CGRectMake(self.view.center.x-55,self.view.center.y - 40-extraheight , 302/2, 92/2)];
     logoimgview.image = [UIImage imageNamed:@"logoword.png"];
-    [self.view addSubview:logoimgview2];
-    [self.view addSubview:logoimgview];
+   // [self.view addSubview:logoimgview2];
+    //[self.view addSubview:logoimgview];
     UIImageView *defaultpage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     defaultpage.image = [UIImage imageNamed:@"first"];
     [self.view addSubview:defaultpage];
     
+//    [UIView animateWithDuration:.5f animations:^{
+//        [logoimgview setFrame:CGRectMake(0, 50, logoimgview.frame.size.width-50, logoimgview.frame.size.height-50)];
+//    }];
     
-    
-    [UIView animateWithDuration:1 delay:0 options:nil animations:^{
-        defaultpage.alpha = 0;
+//    [UIView animateWithDuration:.5f animations:^{
+//        [logoimgview setFrame:CGRectMake(0, 50, logoimgview.frame.size.width-50, logoimgview.frame.size.height-50)];
+//
+//        
+//    } completion:^(BOOL finished) {
+//        NSLog(@"ok completed");
+//    }];
+//
+    [UIView animateWithDuration:2.f animations:^{
+               defaultpage.alpha = 0;
     } completion:^(BOOL finished) {
         [self initViews:NO];
         [self startAnimation];
     }];
+    
+//    [UIView animateWithDuration:1 delay:0 options:nil animations:^{
+//        defaultpage.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        [self initViews:NO];
+//        [self startAnimation];
+//    }];
     
     
 }
@@ -95,7 +108,6 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LoginBG-568h@2x"]]];
     
     [self initSetupViews];
@@ -159,6 +171,12 @@
 
 -(void)clickRegister:(id)sender
 {
+    
+    
+    ValidateViewController *validateViewController= [[ValidateViewController alloc] init];
+    
+    
+    [self.navigationController pushViewController:validateViewController animated:YES];
     // [self.password resignFirstResponder];
     // [self.username resignFirstResponder];
     //[SVProgressHUD showWithStatus:MyLocal(@"loading")];
@@ -188,7 +206,12 @@
 
 -(void)clickLogin:(id)sender
 {
-    [self checklogin];
+   // [self checklogin];
+    
+    StudyTableview *studyTable = [[StudyTableview alloc] init];
+    
+    [self.navigationController pushViewController:studyTable animated:YES];
+    
 }
 
 -(void)clickSinaLogin:(id)sender
@@ -205,17 +228,18 @@
 -(void)initViews:(BOOL)hidden
 {
     
-    
     self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(5, 200, self.view.frame.size.width-10, TABLEHEIGHT) style:UITableViewStyleGrouped];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.backgroundView = nil;
     self.tableview.backgroundColor = [UIColor clearColor];
     self.tableview.scrollEnabled = NO;
-    self.tableview.allowsSelection = NO;
+    self.tableview.allowsSelection = YES;
     self.tableview.alpha = 0;
     self.tableview.separatorStyle =UITableViewCellSeparatorStyleSingleLine;
     self.tableview.separatorColor = [UIColor colorWithWhite:0.911 alpha:1.000];
+    
+    //self.tableview.layer.cornerRadius = 8.;
     [self.tableview setHidden:hidden];
     [self.tableview setBackgroundView:nil];
     [self.tableview setBackgroundColor:[UIColor clearColor]];
@@ -301,11 +325,8 @@
         for (UIView *views in options) {
             [views setFrame:CGRectMake(views.frame.origin.x+x,views.frame.origin.y+y ,views.frame.size.width, views.frame.size.height)];
         }
-        
-        
-        
     }
-                     completion:^(BOOL finished)
+        completion:^(BOOL finished)
      {
          handel(YES);
      }];
@@ -394,7 +415,7 @@
             username.autocorrectionType = UITextAutocorrectionTypeNo;
             username.placeholder = @"username";
             username.delegate = self;
-            [cell1 addSubview:username];
+            [cell1.contentView addSubview:username];
         }
         
         return cell1;
@@ -493,16 +514,6 @@
             [self.logoimgview2 setFrame:CGRectMake(self.logoimgview2.frame.origin.x, self.logoimgview2.frame.origin.y - 40, self.logoimgview2.frame.size.width, self.logoimgview2.frame.size.height-10)];
         }];
         
-        /*
-         [UIView animateWithDuration:0.5 delay:0 options:nil animations:^{
-         [self.logoimgview setFrame:CGRectMake(self.logoimgview.frame.origin.x, self.logoimgview.frame.origin.y + 30, self.logoimgview.frame.size.width, self.logoimgview.frame.size.height-10)];
-         
-         [self.logoimgview2 setFrame:CGRectMake(self.logoimgview2.frame.origin.x, self.logoimgview2.frame.origin.y + 30, self.logoimgview2.frame.size.width, self.logoimgview2.frame.size.height-10)];
-         
-         } completion:^(BOOL finished) {
-         logoFlags = YES;
-         }];
-         */
     }
     
     
