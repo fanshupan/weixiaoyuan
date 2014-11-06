@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "ValidateViewController.h"
 #import "StudyTableview.h"
-
+#import "httpClient.h"
 #define TABLEWIDTH 310
 #define TABLEHEIGHT 130
 #define HEIGHT_IPHONE_5 568
@@ -40,7 +40,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 -(void)startAnimation
@@ -69,8 +69,8 @@
     tableviewAnimatFlag = YES;
     logoimgview= [[UIImageView alloc]initWithFrame:CGRectMake(self.view.center.x-55,self.view.center.y - 40-extraheight , 302/2, 92/2)];
     logoimgview.image = [UIImage imageNamed:@"logoword.png"];
-   // [self.view addSubview:logoimgview2];
-    //[self.view addSubview:logoimgview];
+    [self.view addSubview:logoimgview2];
+    [self.view addSubview:logoimgview];
     UIImageView *defaultpage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     defaultpage.image = [UIImage imageNamed:@"first"];
     [self.view addSubview:defaultpage];
@@ -171,12 +171,30 @@
 
 -(void)clickRegister:(id)sender
 {
-    
-    
-    ValidateViewController *validateViewController= [[ValidateViewController alloc] init];
-    
-    
+     ValidateViewController *validateViewController= [[ValidateViewController alloc] init];
     [self.navigationController pushViewController:validateViewController animated:YES];
+    
+    NSDictionary *param = @{@"school_code":@"szu"};
+    
+    [[httpClient sharedClient] POST:@"/api/school/info"
+                         parameters:param
+                            success:^(NSURLSessionDataTask *task, id responseObject) {
+                                
+                                NSDictionary *dict = (NSDictionary *)responseObject;
+                                NSLog(@"dict: %@",dict);
+                               
+                                validateViewController.validaDict = dict;   
+                                
+                                
+                            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                
+                                NSLog(@"test:%@",error);
+                            }];
+    
+    
+    
+    
+    
     // [self.password resignFirstResponder];
     // [self.username resignFirstResponder];
     //[SVProgressHUD showWithStatus:MyLocal(@"loading")];
@@ -208,9 +226,36 @@
 {
    // [self checklogin];
     
-    StudyTableview *studyTable = [[StudyTableview alloc] init];
     
-    [self.navigationController pushViewController:studyTable animated:YES];
+    //"szu"
+    NSDictionary *param = @{@"email":@"wxy_3@qq.com",
+                            @"password":@"888888"};
+    
+    [[httpClient sharedClient] POST:@"/api/account/login"
+                         parameters:param
+                            success:^(NSURLSessionDataTask *task, id responseObject) {
+                                
+                                NSDictionary *dict = (NSDictionary *)responseObject;
+                                NSLog(@"dict: %@",dict);
+
+                                if (dict[@"error"]) {
+                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:dict[@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                    [alertView show];
+                                }
+                                
+                                
+
+                                
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    
+    }];
+    
+    
+    //StudyTableview *studyTable = [[StudyTableview alloc] init];
+    
+   // [self.navigationController pushViewController:studyTable animated:YES];
     
 }
 

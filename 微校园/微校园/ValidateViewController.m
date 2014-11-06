@@ -15,14 +15,14 @@
 
 @property (nonatomic,strong)    NSMutableArray *questions;
 @property (nonatomic,strong)    NSMutableArray *hints;
-@property (nonatomic,strong) NSMutableArray *answer;
+@property (nonatomic,strong)    NSMutableArray *answer;
 @property (nonatomic,strong)    UITextField *textField;
 @property (nonatomic,assign)    int currentIndex;
 @property (nonatomic,strong)    UILabel *questionLabel;
 @property (nonatomic,strong)    UIScrollView *scrollview;
 @property (nonatomic,strong)    UILabel * hintLabel;
 @property (nonatomic,strong)    UIButton *answerButton;
-@property (nonatomic,strong)     UIButton *changeButton;
+@property (nonatomic,strong)    UIButton *changeButton;
 @property (nonatomic,strong)    UITextField *answerField;
 @property (nonatomic,assign)    int countAnswer;
 @end
@@ -36,7 +36,7 @@
 @synthesize answerButton = _answerButton;
 @synthesize changeButton = _changeButton;
 @synthesize answerField = _answerField;
-@synthesize  countAnswer = _countAnswer;
+@synthesize countAnswer = _countAnswer;
 - (void)goback
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -68,6 +68,8 @@
     UILabel *schoolName = [[UILabel alloc] initWithFrame:CGRectMake(90, 27, 200, 30)];
     [schoolName setBackgroundColor:[UIColor clearColor]];
     
+    //schoolName.text=[dict objectForKey:@"name"];
+
     schoolName.textColor = [UIColor whiteColor];
     schoolName.font = [UIFont boldSystemFontOfSize:17];
     schoolName.text = @"深圳大学";
@@ -176,6 +178,8 @@
     
     
     [self initViews];
+    
+
     // Do any additional setup after loading the view.
    // [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
     
@@ -303,7 +307,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController.navigationBar setHidden:NO];
 
 }
 

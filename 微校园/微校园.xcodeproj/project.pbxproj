@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14FE082F1A05D687003EDD6C /* httpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FE082E1A05D687003EDD6C /* httpClient.m */; };
 		7C33EDE219FB3F7D0020667D /* ValidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C33EDE119FB3F7D0020667D /* ValidateViewController.m */; };
 		7C6DD38B1A04567800D26F85 /* szu_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C6DD37F1A04567800D26F85 /* szu_bg.jpeg */; };
 		7C6DD38C1A04567800D26F85 /* szu_logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C6DD3801A04567800D26F85 /* szu_logo.jpeg */; };
@@ -373,6 +374,7 @@
 		7CF05AE819F2089700BE314B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05AE719F2089700BE314B /* AppDelegate.m */; };
 		7CF05AF319F2089700BE314B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF05AF219F2089700BE314B /* Images.xcassets */; };
 		7CF05B4219F20CB800BE314B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05B4119F20CB800BE314B /* LoginViewController.m */; };
+		8CE5D47BACEA056C88E7F188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62EBBC2219783C742BF2EE2A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -386,6 +388,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14FE082D1A05D687003EDD6C /* httpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpClient.h; sourceTree = "<group>"; };
+		14FE082E1A05D687003EDD6C /* httpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpClient.m; sourceTree = "<group>"; };
+		62EBBC2219783C742BF2EE2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C33EDE019FB3F7D0020667D /* ValidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateViewController.h; sourceTree = "<group>"; };
 		7C33EDE119FB3F7D0020667D /* ValidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateViewController.m; sourceTree = "<group>"; };
 		7C6DD37F1A04567800D26F85 /* szu_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = szu_bg.jpeg; sourceTree = "<group>"; };
@@ -761,6 +766,8 @@
 		7CF05B0019F2089700BE314B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF05B4019F20CB800BE314B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7CF05B4119F20CB800BE314B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		956A749CFA5E12440CE428AE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E280B10A243AED1115ECCCB2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -768,6 +775,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CE5D47BACEA056C88E7F188 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +789,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14FE082C1A05D660003EDD6C /* httpClinet */ = {
+			isa = PBXGroup;
+			children = (
+				14FE082D1A05D687003EDD6C /* httpClient.h */,
+				14FE082E1A05D687003EDD6C /* httpClient.m */,
+			);
+			name = httpClinet;
+			sourceTree = "<group>";
+		};
+		3E1B046F96126E5C699E89DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E280B10A243AED1115ECCCB2 /* Pods.debug.xcconfig */,
+				956A749CFA5E12440CE428AE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7C6DD37E1A04566900D26F85 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1179,8 @@
 				7CF05AE119F2089700BE314B /* 微校园 */,
 				7CF05AFE19F2089700BE314B /* 微校园Tests */,
 				7CF05AE019F2089700BE314B /* Products */,
+				3E1B046F96126E5C699E89DF /* Pods */,
+				B2EB0D752F177A60F0F0E930 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1168,6 +1196,7 @@
 		7CF05AE119F2089700BE314B /* 微校园 */ = {
 			isa = PBXGroup;
 			children = (
+				14FE082C1A05D660003EDD6C /* httpClinet */,
 				7C6DD37E1A04566900D26F85 /* Images */,
 				7CF05AE619F2089700BE314B /* AppDelegate.h */,
 				7CF05AE719F2089700BE314B /* AppDelegate.m */,
@@ -1210,6 +1239,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B2EB0D752F177A60F0F0E930 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62EBBC2219783C742BF2EE2A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1217,9 +1254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CF05B0519F2089700BE314B /* Build configuration list for PBXNativeTarget "微校园" */;
 			buildPhases = (
+				A439DA2595F7CCD4629ACF66 /* Check Pods Manifest.lock */,
 				7CF05ADB19F2089700BE314B /* Sources */,
 				7CF05ADC19F2089700BE314B /* Frameworks */,
 				7CF05ADD19F2089700BE314B /* Resources */,
+				CCE14017C0052CB8CE3D4D98 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1662,6 +1701,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A439DA2595F7CCD4629ACF66 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCE14017C0052CB8CE3D4D98 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7CF05ADB19F2089700BE314B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1673,6 +1745,7 @@
 				7C96FFFB1A0480E600ABCE59 /* StudyTableview.m in Sources */,
 				7CF05AE519F2089700BE314B /* main.m in Sources */,
 				7CF05B4219F20CB800BE314B /* LoginViewController.m in Sources */,
+				14FE082F1A05D687003EDD6C /* httpClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1772,6 +1845,7 @@
 		};
 		7CF05B0619F2089700BE314B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E280B10A243AED1115ECCCB2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "微校园/Info.plist";
@@ -1783,6 +1857,7 @@
 		};
 		7CF05B0719F2089700BE314B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 956A749CFA5E12440CE428AE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "微校园/Info.plist";

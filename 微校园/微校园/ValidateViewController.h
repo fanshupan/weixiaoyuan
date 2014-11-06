@@ -10,4 +10,7 @@
 
 @interface ValidateViewController : UIViewController<UITextFieldDelegate>
 
+
+@property (nonatomic,strong) NSDictionary *validaDict;
+
 @end
