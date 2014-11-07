@@ -45,6 +45,12 @@
 
 -(void)initViews
 {
+    self.questions = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    self.hints = [[NSMutableArray alloc] initWithCapacity:0];
+    self.answer = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    
     
     self.scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
@@ -113,32 +119,48 @@
     
     
     _currentIndex=0;
-    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
-        NSMutableArray *questionMutableArray=(NSMutableArray *)_validaDict[@"questions"];
-        NSDictionary *questionDictionary=[questionMutableArray objectAtIndex:_currentIndex];
-        NSString *qusetionString=[questionDictionary objectForKey:@"question"];
-        [_questions insertObject:qusetionString atIndex:_currentIndex];
-    }
-    //_questions=(NSMutableArray *)_validaDict[@"questions"];
-    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
-        NSMutableArray *hintMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
-        NSDictionary *hintDictionary=[hintMutableArray objectAtIndex:_currentIndex];
-        NSString *hintString=[hintDictionary objectForKey:@"hint"];
-        [self.hints insertObject:hintString atIndex:_currentIndex];
+    
+
+    NSArray *questionsArray = _validaDict[@"questions"];
+    
+    for (int i = 0; i < [questionsArray count]; i++) {
+        NSDictionary *tempQuestions = [questionsArray objectAtIndex:i];
+        [_questions addObject:tempQuestions[@"question"]];
+        [hints addObject:tempQuestions[@"hint"]];
+        [self.answer addObject:tempQuestions[@"answer"]];
+
     }
     
-    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
-        NSMutableArray *answerMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
-        NSDictionary *answerDictionary=[answerMutableArray objectAtIndex:_currentIndex];
-        NSString *answerString=[answerDictionary objectForKey:@"answer"];
-        [self.answer insertObject:answerString atIndex:_currentIndex];
-    }
+    
+    
+    
+    
+//    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+//        NSMutableArray *questionMutableArray=(NSMutableArray *)_validaDict[@"questions"];
+//        NSDictionary *questionDictionary=[questionMutableArray objectAtIndex:_currentIndex];
+//        NSString *qusetionString=[questionDictionary objectForKey:@"question"];
+//        [_questions insertObject:qusetionString atIndex:_currentIndex];
+//    }
+//    //_questions=(NSMutableArray *)_validaDict[@"questions"];
+//    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+//        NSMutableArray *hintMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
+//        NSDictionary *hintDictionary=[hintMutableArray objectAtIndex:_currentIndex];
+//        NSString *hintString=[hintDictionary objectForKey:@"hint"];
+//        [self.hints insertObject:hintString atIndex:_currentIndex];
+//    }
+//    
+//    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+//        NSMutableArray *answerMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
+//        NSDictionary *answerDictionary=[answerMutableArray objectAtIndex:_currentIndex];
+//        NSString *answerString=[answerDictionary objectForKey:@"answer"];
+//        [self.answer insertObject:answerString atIndex:_currentIndex];
+//    }
     
     
     
     
     _questionLabel = [[UILabel alloc]initWithFrame:CGRectMake(31, 190, 250, 50)];
-    _questionLabel.text = [self.questions objectAtIndex:0];
+    _questionLabel.text = [self.questions objectAtIndex:_currentIndex];
     _questionLabel.font = [UIFont systemFontOfSize:15];
     _questionLabel.backgroundColor = [UIColor clearColor];
     _questionLabel.numberOfLines = 0;
@@ -150,9 +172,9 @@
     _hintLabel  = [[UILabel alloc]initWithFrame:CGRectMake(31, 280, 300, 30)];
     
     _hintLabel.backgroundColor = [UIColor clearColor];
-    _hintLabel.text = [self.hints objectAtIndex:0];
+    _hintLabel.text = [self.hints objectAtIndex:_currentIndex];
     _hintLabel.font = [UIFont systemFontOfSize:12];
-    _hintLabel.backgroundColor = [UIColor redColor];
+    _hintLabel.backgroundColor = [UIColor clearColor];
     _hintLabel.textColor = [UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
     [self.scrollview addSubview:_hintLabel];
     
