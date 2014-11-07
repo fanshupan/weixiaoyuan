@@ -172,7 +172,7 @@
 -(void)clickRegister:(id)sender
 {
      ValidateViewController *validateViewController= [[ValidateViewController alloc] init];
-    [self.navigationController pushViewController:validateViewController animated:YES];
+    
     
     NSDictionary *param = @{@"school_code":@"szu"};
     
@@ -185,6 +185,7 @@
                                
                                 validateViewController.validaDict = dict;   
                                 
+                                [self.navigationController pushViewController:validateViewController animated:YES];
                                 
                             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                 

@@ -68,11 +68,12 @@
     UILabel *schoolName = [[UILabel alloc] initWithFrame:CGRectMake(90, 27, 200, 30)];
     [schoolName setBackgroundColor:[UIColor clearColor]];
     
-    //schoolName.text=[dict objectForKey:@"name"];
+    schoolName.text=[_validaDict objectForKey:@"name"];
 
     schoolName.textColor = [UIColor whiteColor];
     schoolName.font = [UIFont boldSystemFontOfSize:17];
-    schoolName.text = @"深圳大学";
+    
+    //schoolName.text = @"深圳大学";
     [self.scrollview addSubview:schoolName];
     
     UIImage *logoImg = [UIImage imageNamed:@"szu_logo.jpeg"];
@@ -104,27 +105,54 @@
     
     UILabel *firstLine = [[UILabel alloc]initWithFrame:CGRectMake(31, 160, 300, 30)];
     
-    firstLine.text = [NSString stringWithFormat:@"为了确认您是%@的学生,请回答:",@"深圳大学"];
+    firstLine.text = [NSString stringWithFormat:@"为了确认您是%@的学生,请回答:",schoolName.text];
     firstLine.backgroundColor = [UIColor clearColor];
     firstLine.textColor = [UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
     firstLine.font = [UIFont systemFontOfSize:15];
     [self.scrollview addSubview:firstLine];
     
     
-    _questionLabel = [[UILabel alloc]initWithFrame:CGRectMake(31, 190, 250, 50)];
+    _currentIndex=0;
+    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+        NSMutableArray *questionMutableArray=(NSMutableArray *)_validaDict[@"questions"];
+        NSDictionary *questionDictionary=[questionMutableArray objectAtIndex:_currentIndex];
+        NSString *qusetionString=[questionDictionary objectForKey:@"question"];
+        [_questions insertObject:qusetionString atIndex:_currentIndex];
+    }
+    //_questions=(NSMutableArray *)_validaDict[@"questions"];
+    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+        NSMutableArray *hintMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
+        NSDictionary *hintDictionary=[hintMutableArray objectAtIndex:_currentIndex];
+        NSString *hintString=[hintDictionary objectForKey:@"hint"];
+        [self.hints insertObject:hintString atIndex:_currentIndex];
+    }
     
+    for (_currentIndex=0; _currentIndex<=2; _currentIndex++) {
+        NSMutableArray *answerMutableArray=(NSMutableArray *)_validaDict[@"questinos"];
+        NSDictionary *answerDictionary=[answerMutableArray objectAtIndex:_currentIndex];
+        NSString *answerString=[answerDictionary objectForKey:@"answer"];
+        [self.answer insertObject:answerString atIndex:_currentIndex];
+    }
+    
+    
+    
+    
+    _questionLabel = [[UILabel alloc]initWithFrame:CGRectMake(31, 190, 250, 50)];
     _questionLabel.text = [self.questions objectAtIndex:0];
     _questionLabel.font = [UIFont systemFontOfSize:15];
     _questionLabel.backgroundColor = [UIColor clearColor];
     _questionLabel.numberOfLines = 0;
     [self.scrollview addSubview:_questionLabel];
     
+    
+    
+    
     _hintLabel  = [[UILabel alloc]initWithFrame:CGRectMake(31, 280, 300, 30)];
     
     _hintLabel.backgroundColor = [UIColor clearColor];
-    _hintLabel.text = [NSString stringWithFormat:@"提示:%@",[hints objectAtIndex:0]];
+    _hintLabel.text = [self.hints objectAtIndex:0];
     _hintLabel.font = [UIFont systemFontOfSize:12];
-    _hintLabel.backgroundColor = [UIColor clearColor];
+    _hintLabel.backgroundColor = [UIColor redColor];
     _hintLabel.textColor = [UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
     [self.scrollview addSubview:_hintLabel];
     
@@ -176,6 +204,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
     
     [self initViews];
     
@@ -273,6 +302,7 @@
 }
 -(void)answer:(UIButton *)sender
 {
+
     NSString *myanser = self.textField.text;
     
     NSString *message;
