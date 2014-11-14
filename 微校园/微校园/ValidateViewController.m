@@ -37,6 +37,7 @@
 @synthesize changeButton = _changeButton;
 @synthesize answerField = _answerField;
 @synthesize countAnswer = _countAnswer;
+
 - (void)goback
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -170,8 +171,7 @@
     
     
     _hintLabel  = [[UILabel alloc]initWithFrame:CGRectMake(31, 280, 300, 30)];
-    
-    _hintLabel.backgroundColor = [UIColor clearColor];
+        _hintLabel.backgroundColor = [UIColor clearColor];
     _hintLabel.text = [self.hints objectAtIndex:_currentIndex];
     _hintLabel.font = [UIFont systemFontOfSize:12];
     _hintLabel.backgroundColor = [UIColor clearColor];
@@ -215,8 +215,11 @@
     _answerField.returnKeyType = UIReturnKeyDone;
     [self.scrollview addSubview:_answerField];
     _countAnswer = 0;
+      
     
-    self.navigationItem.title = @"验明正身";
+    //self.navigationController.navigationBar.barTintColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"navbar-bg-blue-cornered"]];
+    //self.navigationItem.title = @"验明正身";
+    
 
 }
 
@@ -322,39 +325,39 @@
     
     
 }
--(void)answer:(UIButton *)sender
-{
-
-    NSString *myanser = self.textField.text;
-    
-    NSString *message;
-    if ([myanser isEqualToString:[self.answer objectAtIndex:self.currentIndex]]) {
-        message = @"回答正确";
-    }else{
-        message = @"回答错误";
-    }
-    
-    UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"title" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    
-}
-
-
--(void)changeAnswer:(UIButton *)sender
-{
-
-    
-    int randNum = rand() % 3; //create the random number.
-    
-    self.currentIndex = randNum;
-
-    
+//-(void)answer:(UIButton *)sender
+//{
+//
+//    NSString *myanser = self.textField.text;
 //    
-//    if (self.currentIndex == [self.questions count]) {
-//        self.currentIndex = 0;
+//    NSString *message;
+//    if ([myanser isEqualToString:[self.answer objectAtIndex:self.currentIndex]]) {
+//        message = @"回答正确";
+//    }else{
+//        message = @"回答错误";
 //    }
-    self.questionLabel.text = [self.questions objectAtIndex:self.currentIndex];
-}
+//    
+//    UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"title" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//    [alert show];
+//    
+//}
+
+
+//-(void)changeAnswer:(UIButton *)sender
+//{
+//
+//    
+//    int randNum = rand() % 3; //create the random number.
+//    
+//    self.currentIndex = randNum;
+//
+//    
+////    
+////    if (self.currentIndex == [self.questions count]) {
+////        self.currentIndex = 0;
+////    }
+//    self.questionLabel.text = [self.questions objectAtIndex:self.currentIndex];
+//}
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -376,19 +379,19 @@
 
 -(void)pushSchoollist:(id)sender
 {
+//    
+//    if(![_answerField.text isEqualToString:[self.answer objectAtIndex:_countAnswer]])
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"回答错误" message:@"您的回答错误请重新回答" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alert show];
+//        
+//        return;
+//    }
+//    else {
     
-    if(![_answerField.text isEqualToString:[self.answer objectAtIndex:_countAnswer]])
-    {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"回答错误" message:@"您的回答错误请重新回答" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        
-        return;
-    }
-    else {
-        
-//        RegisterViewController *registerViewController = [[RegisterViewController alloc]initWIthColleges:self.collegeList school_code:[self.schoolinfo objectForKey:@"school_code"]];
-//        [self.navigationController pushViewController:registerViewController animated:YES];
-    }
+        RegisterViewController *registerViewController = [[RegisterViewController alloc]init];
+        [self.navigationController pushViewController:registerViewController animated:YES];
+    //}
     
 }
 
@@ -397,17 +400,19 @@
 {
     //NSLog(@"change a question");
     
+    int randNum = rand() % 3; //create the random number.
     
+    self.currentIndex = randNum;
     
-    if (_countAnswer+1 == [self.questions count]) {
-        _countAnswer = 0;
-    }
-    else {
-        _countAnswer++;
-    }
+//    if (_countAnswer+1 == [self.questions count]) {
+//        _countAnswer = 0;
+//    }
+//    else {
+//        _countAnswer++;
+//    }
     
-    _questionLabel.text = [self.questions objectAtIndex:_countAnswer];
-    _hintLabel.text = [hints objectAtIndex:_countAnswer];
+    _questionLabel.text = [self.questions objectAtIndex:self.currentIndex];
+    _hintLabel.text = [hints objectAtIndex:self.currentIndex];
     // NSLog(@"_questionField.%@",_questionField.text);
     
 }
