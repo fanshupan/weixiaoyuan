@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "popUpView.h"
+@interface RegisterViewController : UIViewController<UITextFieldDelegate,popUpViewDelegate>
 
-@interface RegisterViewController : UIViewController<UITextFieldDelegate>
-
+@property (nonatomic,strong) NSDictionary *collegesInfo;
 @end

@@ -389,8 +389,9 @@
 //        return;
 //    }
 //    else {
-    
+ 
         RegisterViewController *registerViewController = [[RegisterViewController alloc]init];
+    registerViewController.collegesInfo = self.validaDict;
         [self.navigationController pushViewController:registerViewController animated:YES];
     //}
     

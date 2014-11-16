@@ -9,6 +9,8 @@
 #import "RegisterViewController.h"
 
 #import "WXYUtil.h"
+#import "popUpView.h"
+#import "httpClient.h"
 
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
@@ -19,11 +21,17 @@
 @property (nonatomic,strong) UITextField *passwordField;
 @property (nonatomic,strong) UITextField *nameField;
 @property (nonatomic,strong) UIButton *regiestButton;
+@property (nonatomic,strong) UISwitch *myswitch;
+@property (nonatomic,copy) NSString *single;
+@property (nonatomic,strong) UIButton* chooseCollege;
+@property (nonatomic,strong) NSString *currentCollegeName;
+@property (nonatomic,strong)    popUpView *upView;
+@property (nonatomic,strong) UIControl *control;
 @end
 
 @implementation RegisterViewController
 @synthesize scrollview;
-
+@synthesize upView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +43,7 @@
 
 -(void)registerView
 {
+//    self.single = @"0";
     self.scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     //contentSize的意思是：scrollview内容大小
@@ -74,12 +83,41 @@
     
     [self.scrollview addSubview:_nameField];
     
+    UILabel *singleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_nameField.frame),CGRectGetMaxY(_nameField.frame)+10, 200, 30)];
+    singleLabel.text = @"显示单身:";
+    [self.scrollview addSubview:singleLabel];
+    
+    [singleLabel sizeToFit];
+    
+    
+    
+    self.myswitch = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetMaxX(singleLabel.frame)+10, CGRectGetMaxY(_nameField.frame)+10, self.scrollview.frame.size.width-60, 35)];
+    
+
+    [self.myswitch addTarget:self action:@selector(changeSwitchValue:) forControlEvents:UIControlEventValueChanged];
+    
+    self.myswitch.on = YES;
+    
+    NSLog(@"myswitch %d",self.myswitch.on);
+    
+    
+    self.chooseCollege = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.chooseCollege setTitle:@"选择所在学校" forState:UIControlStateNormal];
+    [self.chooseCollege setFrame:CGRectMake(10, CGRectGetMaxY(self.myswitch.frame)+10, self.scrollview.frame.size.width-60, 35)];
+    [self.chooseCollege addTarget:self action:@selector(clickCollege) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.chooseCollege setBackgroundColor:[UIColor redColor]];
+    
+    
+    [self.scrollview addSubview:self.chooseCollege];
+    [self.scrollview addSubview:self.myswitch];
+    
     _regiestButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [_regiestButton setTitle:@"注册" forState:UIControlStateNormal];
     _regiestButton.titleLabel.font=[UIFont systemFontOfSize:13];
     [_regiestButton setBackgroundColor:[UIColor greenColor]];
-    _regiestButton.frame=CGRectMake(30, CGRectGetMaxY(_nameField.frame)+10, self.scrollview.frame.size.width-60, 35);
-    [_regiestButton addTarget:self action:@selector(getNSString) forControlEvents:UIControlEventTouchUpInside];
+    _regiestButton.frame=CGRectMake(30, CGRectGetMaxY(self.chooseCollege.frame)+10, self.scrollview.frame.size.width-60, 35);
+    [_regiestButton addTarget:self action:@selector(clickRegister) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollview addSubview:_regiestButton];
     
     
@@ -92,29 +130,76 @@
     [_passwordField resignFirstResponder];
     [_nameField resignFirstResponder];
     [_mailField resignFirstResponder];
-    
     [self.scrollview setContentOffset:CGPointMake(0, -44) animated:YES];
     
+    self.upView.hidden = YES;
+
 }
 
-
--(void)getNSString
+-(BOOL)validateDictionary
 {
-    if (![WXYUtil isEmpty:_mailField.text]) {
+    if (self.single.length < 1) {
+        self.single = @"0";
+    }
+    
+    if (![WXYUtil isEmailValidat:_mailField.text]) {
         [WXYUtil alert:@"警告" message:@"邮箱格式不对" cancelButton:@"OK"];
-        return;
+        return NO;
     }
     
     else if ([WXYUtil isEmpty:_nameField.text] || [WXYUtil isEmpty:_passwordField.text]){
         [WXYUtil alert:@"警告" message:@"不能为空" cancelButton:@"OK"];
-        return;
+        return NO;
     }
     
-    NSDictionary *dict2 =@{@"mail":_mailField.text,@"password":_passwordField,@"name":_nameField.text};
+    return YES;
+
+}
+
+
+-(void)clickRegister
+{
+    
+    
+    //第一:检验输入的有效性
+    
+    //第二:给字典赋值
+    
+    //第三:传值到服务端
+    
+    //第四:拿到服务器结果更新UI
+    
+    
+    if (![self validateDictionary])
+        return;
+    
+    NSDictionary *dict2 =@{@"email":_mailField.text,
+                           @"password":_passwordField.text,
+                           @"nickname":_nameField.text,
+                           @"single":self.single,
+                           @"school_code":@"szu",
+                           @"college_id":@"0",
+                           @"source":@"1"};
     
     
     
-    NSLog(@"dict %@",dict2);
+    [[httpClient sharedClient] POST:@"/api/account/register"
+                         parameters:dict2
+                            success:^(NSURLSessionDataTask *task, id responseObject) {
+                                
+                                NSDictionary *dict = (NSDictionary *)responseObject;
+                                NSLog(@"dict: %@",dict);
+                                
+                               // validateViewController.validaDict = dict;
+                                
+                               // [self.navigationController pushViewController:validateViewController animated:YES];
+                                
+                            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                
+                                NSLog(@"test:%@",error);
+                            }];
+    
+    
 }
 
 
@@ -136,15 +221,65 @@
     return YES;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)changeSwitchValue:(UISwitch *)sender
+{
+    NSLog(@"switch value:%d",sender.on);
+    if (sender.on) {
+        self.single = @"1";
+    }
+    else{
+        self.single = @"0";
+    }
 }
-*/
+
+-(void)dismissPopUpView:(UIControl *)sender
+{
+    if (self.upView.hidden) {
+        self.upView.hidden = NO;
+        sender.hidden = NO;
+    }
+    else{
+        self.upView.hidden = YES;
+        sender.hidden = YES;
+
+
+    }
+    
+}
+
+-(void)clickCollege
+{
+    if (!self.upView) {
+        upView=[[popUpView alloc]initWithName:CGRectMake(50, 100, 200, 200) colleges:self.collegesInfo[@"colleges"]];
+        upView.delegate = self;
+        
+        self.control = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        
+        [self.control addTarget:self action:@selector(dismissPopUpView:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.control setBackgroundColor:[UIColor clearColor]];
+        
+        [self.view addSubview:self.control];
+        
+        
+        [upView setBackgroundColor:[UIColor whiteColor]];
+        [self.view addSubview:upView];
+    }
+    [self dismissPopUpView:self.control];
+   // self.upView.hidden = NO;
+    //popUpView *upView = [[popUpView alloc] initWithKey:@"college"];
+    
+//    self.tabBarController
+
+}
+
+-(void)didSelectIndex:(NSString *)collegeName
+{
+    self.currentCollegeName = collegeName;
+    NSLog(@"collegeName %@",collegeName);
+    
+    [self.chooseCollege setTitle:self.currentCollegeName forState:UIControlStateNormal];
+    [self dismissPopUpView:self.control];
+}
 
 @end
