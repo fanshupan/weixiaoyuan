@@ -7,6 +7,10 @@
 //
 
 #import "RegisterViewController.h"
+
+#import "WXYUtil.h"
+
+
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 
 @interface RegisterViewController ()
@@ -24,12 +28,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerView];
+    
+    //[self getNSString];
     // Do any additional setup after loading the view.
 }
 
 -(void)registerView
 {
-    self.scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    //contentSize的意思是：scrollview内容大小
+    self.scrollview.contentSize = CGSizeMake(self.scrollview.frame.size.width, self.scrollview.frame.size.height);
     
     [self.scrollview setBackgroundColor:RGBACOLOR(240, 240, 240, 1.0f)];
     [self.view addSubview:scrollview];
@@ -61,6 +70,8 @@
     UIImageView *nameImage=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"018"]];
     _nameField.leftView=nameImage;
     _nameField.leftViewMode=UITextFieldViewModeAlways;
+    _nameField.delegate = self;
+    
     [self.scrollview addSubview:_nameField];
     
     _regiestButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -81,13 +92,29 @@
     [_passwordField resignFirstResponder];
     [_nameField resignFirstResponder];
     [_mailField resignFirstResponder];
+    
+    [self.scrollview setContentOffset:CGPointMake(0, -44) animated:YES];
+    
 }
 
 
 -(void)getNSString
 {
-    NSDictionary *dict=[[NSDictionary alloc]initWithObjectsAndKeys:_mailField.text,@"mail",_passwordField.text,@"password",_nameField,@"name", nil];
-    NSLog(@"dict %@",dict);
+    if (![WXYUtil isEmpty:_mailField.text]) {
+        [WXYUtil alert:@"警告" message:@"邮箱格式不对" cancelButton:@"OK"];
+        return;
+    }
+    
+    else if ([WXYUtil isEmpty:_nameField.text] || [WXYUtil isEmpty:_passwordField.text]){
+        [WXYUtil alert:@"警告" message:@"不能为空" cancelButton:@"OK"];
+        return;
+    }
+    
+    NSDictionary *dict2 =@{@"mail":_mailField.text,@"password":_passwordField,@"name":_nameField.text};
+    
+    
+    
+    NSLog(@"dict %@",dict2);
 }
 
 
@@ -102,6 +129,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.scrollview setContentOffset:CGPointMake(0, 50) animated:YES];
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation

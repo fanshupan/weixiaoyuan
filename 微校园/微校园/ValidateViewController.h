@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol validateViewControllerDelegate <NSObject>
+
+@optional
+-(void)changeUserName;
+
+@end
+
 @interface ValidateViewController : UIViewController<UITextFieldDelegate>
 
 
 @property (nonatomic,strong) NSDictionary *validaDict;
+@property (nonatomic,assign) id delegate;
 
 @end

@@ -370,6 +370,9 @@
 		7C6DD64E1A0456BC00D26F85 /* comment_seperate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C6DD56A1A0456BC00D26F85 /* comment_seperate@2x.png */; };
 		7C6DD6511A045B4D00D26F85 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */; };
 		7C96FFFB1A0480E600ABCE59 /* StudyTableview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */; };
+		7CC6A71E1A16EEB300E1E240 /* WXYUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6A71D1A16EEB300E1E240 /* WXYUtil.m */; };
+		7CC6A7221A17045700E1E240 /* WXYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6A7211A17045700E1E240 /* WXYTextField.m */; };
+		7CC6A7251A170A3B00E1E240 /* pop.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6A7241A170A3B00E1E240 /* pop.m */; };
 		7CF05AE519F2089700BE314B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05AE419F2089700BE314B /* main.m */; };
 		7CF05AE819F2089700BE314B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF05AE719F2089700BE314B /* AppDelegate.m */; };
 		7CF05AF319F2089700BE314B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF05AF219F2089700BE314B /* Images.xcassets */; };
@@ -391,8 +394,8 @@
 		14FE082D1A05D687003EDD6C /* httpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpClient.h; sourceTree = "<group>"; };
 		14FE082E1A05D687003EDD6C /* httpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpClient.m; sourceTree = "<group>"; };
 		62EBBC2219783C742BF2EE2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C33EDE019FB3F7D0020667D /* ValidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateViewController.h; sourceTree = "<group>"; };
-		7C33EDE119FB3F7D0020667D /* ValidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateViewController.m; sourceTree = "<group>"; };
+		7C33EDE019FB3F7D0020667D /* ValidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateViewController.h; path = ../../ValidateViewController.h; sourceTree = "<group>"; };
+		7C33EDE119FB3F7D0020667D /* ValidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidateViewController.m; path = ../../ValidateViewController.m; sourceTree = "<group>"; };
 		7C6DD37F1A04567800D26F85 /* szu_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = szu_bg.jpeg; sourceTree = "<group>"; };
 		7C6DD3801A04567800D26F85 /* szu_logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = szu_logo.jpeg; sourceTree = "<group>"; };
 		7C6DD3811A04567800D26F85 /* testing.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testing.jpeg; sourceTree = "<group>"; };
@@ -752,10 +755,16 @@
 		7C6DD5681A0456BC00D26F85 /* checkbox_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_ticked.png; sourceTree = "<group>"; };
 		7C6DD5691A0456BC00D26F85 /* comment_seperate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment_seperate.png; sourceTree = "<group>"; };
 		7C6DD56A1A0456BC00D26F85 /* comment_seperate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment_seperate@2x.png"; sourceTree = "<group>"; };
-		7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ../../RegisterViewController.h; sourceTree = "<group>"; };
+		7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ../../RegisterViewController.m; sourceTree = "<group>"; };
 		7C96FFF91A0480E600ABCE59 /* StudyTableview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyTableview.h; sourceTree = "<group>"; };
 		7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyTableview.m; sourceTree = "<group>"; };
+		7CC6A71C1A16EEB300E1E240 /* WXYUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUtil.h; sourceTree = "<group>"; };
+		7CC6A71D1A16EEB300E1E240 /* WXYUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUtil.m; sourceTree = "<group>"; };
+		7CC6A7201A17045700E1E240 /* WXYTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTextField.h; sourceTree = "<group>"; };
+		7CC6A7211A17045700E1E240 /* WXYTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTextField.m; sourceTree = "<group>"; };
+		7CC6A7231A170A3B00E1E240 /* pop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pop.h; sourceTree = "<group>"; };
+		7CC6A7241A170A3B00E1E240 /* pop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pop.m; sourceTree = "<group>"; };
 		7CF05ADF19F2089700BE314B /* 微校园.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微校园.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF05AE319F2089700BE314B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF05AE419F2089700BE314B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -764,8 +773,8 @@
 		7CF05AF219F2089700BE314B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7CF05AFB19F2089700BE314B /* 微校园Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "微校园Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF05B0019F2089700BE314B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CF05B4019F20CB800BE314B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		7CF05B4119F20CB800BE314B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7CF05B4019F20CB800BE314B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../../LoginViewController.h; sourceTree = "<group>"; };
+		7CF05B4119F20CB800BE314B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../../LoginViewController.m; sourceTree = "<group>"; };
 		956A749CFA5E12440CE428AE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E280B10A243AED1115ECCCB2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1173,6 +1182,33 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		7CC6A71B1A16EE7900E1E240 /* WXYUtil */ = {
+			isa = PBXGroup;
+			children = (
+				7CC6A71C1A16EEB300E1E240 /* WXYUtil.h */,
+				7CC6A71D1A16EEB300E1E240 /* WXYUtil.m */,
+				7CC6A7201A17045700E1E240 /* WXYTextField.h */,
+				7CC6A7211A17045700E1E240 /* WXYTextField.m */,
+			);
+			path = WXYUtil;
+			sourceTree = "<group>";
+		};
+		7CC6A71F1A16FCD400E1E240 /* RegisterAndLogin */ = {
+			isa = PBXGroup;
+			children = (
+				7CF05B4019F20CB800BE314B /* LoginViewController.h */,
+				7CF05B4119F20CB800BE314B /* LoginViewController.m */,
+				7C33EDE019FB3F7D0020667D /* ValidateViewController.h */,
+				7C33EDE119FB3F7D0020667D /* ValidateViewController.m */,
+				7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */,
+				7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */,
+				7CC6A7231A170A3B00E1E240 /* pop.h */,
+				7CC6A7241A170A3B00E1E240 /* pop.m */,
+			);
+			name = RegisterAndLogin;
+			path = WXYUtil/Register;
+			sourceTree = "<group>";
+		};
 		7CF05AD619F2089700BE314B = {
 			isa = PBXGroup;
 			children = (
@@ -1196,16 +1232,12 @@
 		7CF05AE119F2089700BE314B /* 微校园 */ = {
 			isa = PBXGroup;
 			children = (
+				7CC6A71F1A16FCD400E1E240 /* RegisterAndLogin */,
+				7CC6A71B1A16EE7900E1E240 /* WXYUtil */,
 				14FE082C1A05D660003EDD6C /* httpClinet */,
 				7C6DD37E1A04566900D26F85 /* Images */,
 				7CF05AE619F2089700BE314B /* AppDelegate.h */,
 				7CF05AE719F2089700BE314B /* AppDelegate.m */,
-				7CF05B4019F20CB800BE314B /* LoginViewController.h */,
-				7CF05B4119F20CB800BE314B /* LoginViewController.m */,
-				7C33EDE019FB3F7D0020667D /* ValidateViewController.h */,
-				7C33EDE119FB3F7D0020667D /* ValidateViewController.m */,
-				7C6DD64F1A045B4D00D26F85 /* RegisterViewController.h */,
-				7C6DD6501A045B4D00D26F85 /* RegisterViewController.m */,
 				7C96FFF91A0480E600ABCE59 /* StudyTableview.h */,
 				7C96FFFA1A0480E600ABCE59 /* StudyTableview.m */,
 				7CF05AF219F2089700BE314B /* Images.xcassets */,
@@ -1741,11 +1773,14 @@
 			files = (
 				7C6DD6511A045B4D00D26F85 /* RegisterViewController.m in Sources */,
 				7C33EDE219FB3F7D0020667D /* ValidateViewController.m in Sources */,
+				7CC6A71E1A16EEB300E1E240 /* WXYUtil.m in Sources */,
 				7CF05AE819F2089700BE314B /* AppDelegate.m in Sources */,
 				7C96FFFB1A0480E600ABCE59 /* StudyTableview.m in Sources */,
 				7CF05AE519F2089700BE314B /* main.m in Sources */,
 				7CF05B4219F20CB800BE314B /* LoginViewController.m in Sources */,
+				7CC6A7251A170A3B00E1E240 /* pop.m in Sources */,
 				14FE082F1A05D687003EDD6C /* httpClient.m in Sources */,
+				7CC6A7221A17045700E1E240 /* WXYTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

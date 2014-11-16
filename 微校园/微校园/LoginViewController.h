@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ValidateViewController.h"
 typedef void(^handel)(BOOL finished);
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,validateViewControllerDelegate>
 
 @property (nonatomic,strong) UITextField *username;
 @property (nonatomic,strong) UITextField *password;

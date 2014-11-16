@@ -40,6 +40,7 @@
 
 - (void)goback
 {
+    [self.delegate changeUserName];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

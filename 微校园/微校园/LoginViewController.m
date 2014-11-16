@@ -172,7 +172,7 @@
 -(void)clickRegister:(id)sender
 {
      ValidateViewController *validateViewController= [[ValidateViewController alloc] init];
-    
+     validateViewController.delegate = self;
     
     NSDictionary *param = @{@"school_code":@"szu"};
     
@@ -670,6 +670,11 @@
 -(void)httpRequestFail
 {
     NSLog(@"http request fail");
+}
+
+-(void)changeUserName
+{
+    //self.username.placeholder = @"用户名";
 }
 
 @end
