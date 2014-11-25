@@ -142,6 +142,7 @@
         self.single = @"0";
     }
     
+    
     if (![WXYUtil isEmailValidat:_mailField.text]) {
         [WXYUtil alert:@"警告" message:@"邮箱格式不对" cancelButton:@"OK"];
         return NO;
